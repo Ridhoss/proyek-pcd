@@ -8,6 +8,7 @@ import 'package:logbook_app_059/features/logbook/log_editor_page.dart';
 import 'package:logbook_app_059/features/logbook/log_preview.dart';
 import 'package:logbook_app_059/features/logbook/models/log_model.dart';
 import 'package:logbook_app_059/features/logbook/models/user_model.dart';
+import 'package:logbook_app_059/features/vision/vision_view.dart';
 import 'package:logbook_app_059/services/access_control_services.dart';
 import 'package:logbook_app_059/services/sync_service.dart';
 import 'package:lottie/lottie.dart';
@@ -361,6 +362,17 @@ class _LogViewState extends State<LogView> {
               );
             },
             child: const Icon(Icons.calculate),
+          ),
+          const SizedBox(width: 12),
+          FloatingActionButton(
+            heroTag: "vision_page",
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const VisionView()),
+              );
+            },
+            child: const Icon(Icons.camera_alt),
           ),
         ],
       ),

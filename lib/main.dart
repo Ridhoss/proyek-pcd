@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -5,6 +6,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:logbook_app_059/features/logbook/models/log_model.dart';
 import 'package:logbook_app_059/features/onboarding/onboarding_view.dart';
 import 'package:logbook_app_059/services/sync_service.dart';
+
+List<CameraDescription> cameras = [];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +18,8 @@ void main() async {
   SyncService().startSyncListener();
 
   await initializeDateFormatting('id_ID');
+
+  cameras = await availableCameras();
 
   runApp(const MyApp());
 }
