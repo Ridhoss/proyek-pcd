@@ -96,20 +96,15 @@ class VisionController extends ChangeNotifier with WidgetsBindingObserver {
   }
 
   Future<void> toggleFlash() async {
-    if (controller == null) return;
+    isFlashOn = !isFlashOn;
 
-    try {
-      isFlashOn = !isFlashOn;
-
+    if (controller != null) {
       await controller!.setFlashMode(
         isFlashOn ? FlashMode.torch : FlashMode.off,
       );
-
-      notifyListeners();
-    } catch (e) {
-      errorMessage = "Flash tidak tersedia";
-      notifyListeners();
     }
+
+    notifyListeners();
   }
 
   void toggleOverlay() {

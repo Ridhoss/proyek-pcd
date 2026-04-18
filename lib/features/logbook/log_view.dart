@@ -8,6 +8,7 @@ import 'package:logbook_app_059/features/logbook/log_editor_page.dart';
 import 'package:logbook_app_059/features/logbook/log_preview.dart';
 import 'package:logbook_app_059/features/logbook/models/log_model.dart';
 import 'package:logbook_app_059/features/logbook/models/user_model.dart';
+import 'package:logbook_app_059/features/vision/pcd_view.dart';
 import 'package:logbook_app_059/features/vision/vision_view.dart';
 import 'package:logbook_app_059/services/access_control_services.dart';
 import 'package:logbook_app_059/services/sync_service.dart';
@@ -369,7 +370,7 @@ class _LogViewState extends State<LogView> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const VisionView()),
+                MaterialPageRoute(builder: (context) => const PcdView()),
               );
             },
             child: const Icon(Icons.camera_alt),

@@ -4,8 +4,12 @@ import 'package:logbook_app_059/features/vision/vision_controller.dart';
 import 'package:logbook_app_059/features/vision/damage_painter.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+enum VisionMode { preview, capture }
+
 class VisionView extends StatefulWidget {
-  const VisionView({super.key});
+  final VisionMode mode;
+
+  const VisionView({super.key, this.mode = VisionMode.preview});
 
   @override
   State<VisionView> createState() => _VisionViewState();
@@ -24,6 +28,26 @@ class _VisionViewState extends State<VisionView> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  Future<void> _takePhoto() async {
+    try {
+      final camera = _controller.controller!;
+
+      await camera.setFlashMode(
+        _controller.isFlashOn ? FlashMode.torch : FlashMode.off,
+      );
+
+      final file = await camera.takePicture();
+
+      final bytes = await file.readAsBytes();
+
+      if (!mounted) return;
+
+      Navigator.pop(context, bytes);
+    } catch (e) {
+      debugPrint("Capture error: $e");
+    }
   }
 
   @override
@@ -126,6 +150,30 @@ class _VisionViewState extends State<VisionView> {
             painter: _controller.isOverlayOn
                 ? DamagePainter(results: _controller.results)
                 : null,
+          ),
+        ),
+
+        Positioned(
+          bottom: 30,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: GestureDetector(
+              onTap: _takePhoto,
+              child: Container(
+                width: 80,
+                height: 80,
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.camera_alt,
+                  color: Colors.white,
+                  size: 36,
+                ),
+              ),
+            ),
           ),
         ),
       ],
