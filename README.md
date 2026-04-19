@@ -86,13 +86,8 @@ Fitur yang tersedia:
 flutter clean
 flutter pub get
 ```
-
-### Emulator tidak detect kamera
-
-* Aktifkan camera di AVD Manager
-
 ---
 
 ## Repository
 
-https://github.com/SalmaArifahZahra/-PY4AI_2B_D3_2024-_Modul6_062.git
+https://github.com/Ridhoss/proyek-pcd.git
