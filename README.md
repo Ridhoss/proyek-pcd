@@ -1,19 +1,98 @@
-# logbook_app_059
+# Smart Patrol Vision App (Flutter + OpenCV)
 
-A new Flutter project.
+- **Nama** : Ridho Sulistyo S
+- **NIM**  : 241511059
+- **Kelas**: 2B-D3
 
-## Prinsip SRP (Single Responsibility Principle)
-Setiap kelas hanya memiliki satu tanggung jawab atau fungsi utama. Ini membantu saya untuk memastikan bahwa setiap bagian dari kode memiliki tujuan yang jelas. Pada fitur History, saya memiliki class History hanya untuk menampilkan data, dan Controller hanya untuk mengelola logika countnya.
+Aplikasi ini dibuat untuk memenuhi tugas Pemrograman Citra Digital yang merupakan bagian dari modul **Proyek PY4AI Modul 6 – Dasar Vision & Interface**, yang berfokus pada implementasi **Computer Vision di Flutter** menggunakan kamera sebagai input dan **OpenCV** untuk pemrosesan citra.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Deskripsi Proyek
 
-A few resources to get you started if this is your first Flutter project:
+Aplikasi ini merupakan evolusi dari Logbook App menjadi **Smart-Patrol System**, yang mampu:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* Mengakses kamera secara real-time
+* Menampilkan **live camera preview**
+* Menambahkan **overlay visual (CustomPainter)**
+* Melakukan **image processing menggunakan OpenCV**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## Konfigurasi Kamera
+
+### Android
+
+Edit `android/app/src/main/AndroidManifest.xml`:
+
+```xml
+<uses-permission android:name="android.permission.CAMERA"/>
+
+<uses-feature android:name="android.hardware.camera"/>
+<uses-feature android:name="android.hardware.camera.autofocus"/>
+```
+
+## Cara Menjalankan Project
+
+```bash
+# Clone project
+git clone https://github.com/Ridhoss/proyek-pcd.git
+
+# Masuk folder
+cd proyek-pcd
+
+# Install dependencies
+flutter pub get
+
+# Jalankan aplikasi
+flutter run
+```
+
+---
+
+## Fitur Utama (Modul 6)
+
+### Vision Setup
+
+* Kamera berhasil diakses
+* Live preview tampil
+* Kamera auto dispose saat background
+
+---
+
+## Image Processing
+
+Fitur yang tersedia:
+
+* Grayscale
+* Edge Detection
+* Brightness & Contrast
+* Gaussian Blur
+* Sharpening
+* Inverse
+* High Pass Filter
+* Histogram Equalization
+---
+
+## Troubleshooting
+
+### Kamera tidak muncul
+
+* Pastikan permission di-allow
+* Gunakan real device
+
+### Build error
+
+```bash
+flutter clean
+flutter pub get
+```
+
+### Emulator tidak detect kamera
+
+* Aktifkan camera di AVD Manager
+
+---
+
+## Repository
+
+https://github.com/SalmaArifahZahra/-PY4AI_2B_D3_2024-_Modul6_062.git
