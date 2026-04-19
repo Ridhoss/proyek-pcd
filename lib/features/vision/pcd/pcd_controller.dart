@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'pcd_service.dart';
+import 'package:logbook_app_059/features/vision/pcd/service/pcd_service.dart';
 
 class PcdController extends ChangeNotifier {
   Uint8List? originalImage;
@@ -9,16 +9,12 @@ class PcdController extends ChangeNotifier {
 
   final ImagePicker _picker = ImagePicker();
 
-  // ================= STATE LEVEL =================
-
   int brightnessLevel = 0;
   int contrastLevel = 0;
   int blurLevel = 0;
   int sharpenLevel = 0;
 
   bool get hasImage => originalImage != null;
-
-  // ================= IMAGE =================
 
   Future<void> pickImage() async {
     final file = await _picker.pickImage(source: ImageSource.gallery);
@@ -58,8 +54,6 @@ class PcdController extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ================= PIPELINE =================
-
   void _reprocess() async {
     if (originalImage == null) return;
 
@@ -73,8 +67,6 @@ class PcdController extends ChangeNotifier {
     processedImage = img;
     notifyListeners();
   }
-
-  // ================= ADJUSTMENT =================
 
   void incBrightness() {
     brightnessLevel = (brightnessLevel + 40).clamp(-255, 255);
@@ -116,8 +108,6 @@ class PcdController extends ChangeNotifier {
     _reprocess();
   }
 
-  // ================= BASIC OPS =================
-
   void _apply(Uint8List Function(Uint8List) op) {
     if (originalImage == null) return;
 
@@ -132,8 +122,6 @@ class PcdController extends ChangeNotifier {
   void applyInverse() => _apply(PcdService.inverse);
 
   void applyEdge() => _apply(PcdService.edge);
-
-  // ================= ADVANCED =================
 
   void applyHistogram() => _apply(PcdService.histogram);
 

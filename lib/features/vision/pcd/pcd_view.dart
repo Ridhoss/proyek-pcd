@@ -61,8 +61,6 @@ class _PcdViewState extends State<PcdView> {
     );
   }
 
-  // ================= PREVIEW =================
-
   Widget _buildPreview() {
     return SizedBox(
       height: 250,
@@ -96,8 +94,6 @@ class _PcdViewState extends State<PcdView> {
       ),
     );
   }
-
-  // ================= UPLOAD =================
 
   Widget _buildUploadSection() {
     return Padding(
@@ -138,8 +134,6 @@ class _PcdViewState extends State<PcdView> {
     );
   }
 
-  // ================= BASIC =================
-
   Widget _buildBasicOperations() {
     return Column(
       children: [
@@ -160,8 +154,6 @@ class _PcdViewState extends State<PcdView> {
       ],
     );
   }
-
-  // ================= ADJUSTMENT (+ / -) =================
 
   Widget _buildAdjustmentControls() {
     return Column(
@@ -233,8 +225,6 @@ class _PcdViewState extends State<PcdView> {
     );
   }
 
-  // ================= ADVANCED =================
-
   // Widget _buildAdvancedOperations() {
   //   return Column(
   //     children: [
@@ -256,8 +246,6 @@ class _PcdViewState extends State<PcdView> {
   //     ],
   //   );
   // }
-
-  // ================= BUTTON =================
 
   Widget _btn(String text, VoidCallback onPressed) {
     return ElevatedButton(

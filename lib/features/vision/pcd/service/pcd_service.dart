@@ -3,8 +3,7 @@ import 'dart:math' as math;
 import 'package:opencv_dart/opencv_dart.dart' as cv;
 
 class PcdService {
-  // ================= CORE =================
-
+  
   static Uint8List _encode(cv.Mat mat) {
     final (success, bytes) = cv.imencode(".jpg", mat);
     if (!success) throw Exception("Encode gagal");
@@ -18,8 +17,6 @@ class PcdService {
   static cv.Mat _decodeGray(Uint8List bytes) {
     return cv.imdecode(bytes, cv.IMREAD_GRAYSCALE);
   }
-
-  // ================= BASIC =================
 
   static Uint8List grayscale(Uint8List bytes) {
     final mat = _decode(bytes);
@@ -45,9 +42,6 @@ class PcdService {
     return _encode(edge);
   }
 
-  // ================= ADJUSTMENT =================
-
-  // Brightness (fallback manual, aman)
   static Uint8List applyBrightness(Uint8List bytes, int value) {
     final mat = _decode(bytes);
 
@@ -67,7 +61,6 @@ class PcdService {
     return _encode(result);
   }
 
-  // Blur
   static Uint8List applyBlurLevel(Uint8List bytes, int level) {
     final mat = _decode(bytes);
 
@@ -79,7 +72,6 @@ class PcdService {
     return _encode(result);
   }
 
-  // Sharpen (tanpa kernel)
   static Uint8List applySharpenLevel(Uint8List bytes, int level) {
     var result = _decode(bytes);
 
@@ -93,8 +85,6 @@ class PcdService {
 
     return _encode(result);
   }
-  
-  // ================= ADVANCED =================
 
   static Uint8List highPass(Uint8List bytes) {
     final mat = _decode(bytes);
@@ -130,8 +120,6 @@ class PcdService {
 
     return _encode(result);
   }
-
-  // ================= STAT =================
 
   static Map<String, double> calculateStatistics(Uint8List bytes) {
     final gray = _decodeGray(bytes);

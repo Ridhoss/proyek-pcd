@@ -57,7 +57,6 @@ class _VisionViewState extends State<VisionView> {
       floatingActionButton: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // 🔦 Flash
           FloatingActionButton(
             heroTag: "flash",
             backgroundColor: _controller.isFlashOn
@@ -71,7 +70,6 @@ class _VisionViewState extends State<VisionView> {
 
           const SizedBox(width: 12),
 
-          // 👁️ Overlay
           FloatingActionButton(
             heroTag: "overlay",
             backgroundColor: _controller.isOverlayOn
